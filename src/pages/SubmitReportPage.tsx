@@ -1,18 +1,7 @@
-import { useState } from "react";
 import AppHeader from "@/components/AppHeader";
 import ReportForm from "@/components/ReportForm";
-import { Report } from "@/lib/types";
-import { mockReports } from "@/lib/mockData";
-import { toast } from "sonner";
 
 export default function SubmitReportPage() {
-  const [, setReports] = useState<Report[]>(mockReports);
-
-  const handleSubmit = (report: Report) => {
-    setReports(prev => [report, ...prev]);
-    toast.success("Report submitted successfully!");
-  };
-
   return (
     <div className="min-h-screen bg-background">
       <AppHeader />
@@ -24,7 +13,7 @@ export default function SubmitReportPage() {
           </p>
         </div>
         <div className="rounded-lg border bg-card p-5">
-          <ReportForm onSubmit={handleSubmit} />
+          <ReportForm />
         </div>
       </div>
     </div>

@@ -1,24 +1,27 @@
 import { useState } from "react";
-import { FoodType, Availability, FOOD_TYPES, Report } from "@/lib/types";
+import { FOOD_TYPES } from "@/lib/types";
+import { useSubmitReport } from "@/hooks/useReports";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { MapPin, Loader2, Check } from "lucide-react";
+import type { Database } from "@/integrations/supabase/types";
 
-interface ReportFormProps {
-  onSubmit: (report: Report) => void;
-}
+type FoodType = Database["public"]["Enums"]["food_type"];
+type AvailabilityStatus = Database["public"]["Enums"]["availability_status"];
 
-export default function ReportForm({ onSubmit }: ReportFormProps) {
+export default function ReportForm() {
   const [marketName, setMarketName] = useState("");
   const [foodType, setFoodType] = useState<FoodType | "">("");
-  const [availability, setAvailability] = useState<Availability | "">("");
+  const [availability, setAvailability] = useState<AvailabilityStatus | "">("");
   const [price, setPrice] = useState("");
   const [lat, setLat] = useState<number | null>(null);
   const [lng, setLng] = useState<number | null>(null);
   const [gettingLocation, setGettingLocation] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  const submitMutation = useSubmitReport();
 
   const captureGPS = () => {
     if (!navigator.geolocation) {
@@ -41,35 +44,40 @@ export default function ReportForm({ onSubmit }: ReportFormProps) {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!marketName || !foodType || !availability) {
       toast.error("Please fill all required fields");
       return;
     }
 
-    const report: Report = {
-      id: `r${Date.now()}`,
-      marketName,
-      latitude: lat ?? -1.95,
-      longitude: lng ?? 30.06,
-      foodType: foodType as FoodType,
-      availability: availability as Availability,
-      price: parseFloat(price) || 0,
-      reporterId: `ns${Math.random().toString(36).slice(2, 6)}`,
-      timestamp: new Date().toISOString(),
-      validationStatus: "pending",
-    };
+    const reporterId = localStorage.getItem("protein-mapper-reporter-id") ||
+      `ns${Math.random().toString(36).slice(2, 8)}`;
+    localStorage.setItem("protein-mapper-reporter-id", reporterId);
 
-    onSubmit(report);
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setMarketName("");
-      setFoodType("");
-      setAvailability("");
-      setPrice("");
-    }, 2000);
+    try {
+      await submitMutation.mutateAsync({
+        market_name: marketName,
+        latitude: lat ?? -1.95,
+        longitude: lng ?? 30.06,
+        food_type: foodType as FoodType,
+        availability: availability as AvailabilityStatus,
+        price: parseFloat(price) || 0,
+        reporter_id: reporterId,
+      });
+
+      setSubmitted(true);
+      toast.success("Report submitted!");
+      setTimeout(() => {
+        setSubmitted(false);
+        setMarketName("");
+        setFoodType("");
+        setAvailability("");
+        setPrice("");
+      }, 2000);
+    } catch {
+      toast.error("Failed to submit report");
+    }
   };
 
   if (submitted) {
@@ -122,10 +130,10 @@ export default function ReportForm({ onSubmit }: ReportFormProps) {
         <Label>Availability *</Label>
         <div className="grid grid-cols-3 gap-2 mt-1">
           {([
-            { value: "available", label: "Available", color: "score-good" },
-            { value: "limited", label: "Limited", color: "score-limited" },
-            { value: "not_available", label: "None", color: "score-severe" },
-          ] as const).map(a => (
+            { value: "available" as const, label: "Available", color: "score-good" },
+            { value: "limited" as const, label: "Limited", color: "score-limited" },
+            { value: "not_available" as const, label: "None", color: "score-severe" },
+          ]).map(a => (
             <button
               type="button"
               key={a.value}
@@ -147,7 +155,8 @@ export default function ReportForm({ onSubmit }: ReportFormProps) {
         <Input id="price" type="number" value={price} onChange={e => setPrice(e.target.value)} placeholder="0" />
       </div>
 
-      <Button type="submit" className="w-full" size="lg">
+      <Button type="submit" className="w-full" size="lg" disabled={submitMutation.isPending}>
+        {submitMutation.isPending ? <Loader2 className="h-4 w-4 mr-2 animate-spin" /> : null}
         Submit Report
       </Button>
     </form>
