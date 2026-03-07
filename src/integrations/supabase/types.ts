@@ -14,7 +14,75 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      reporters: {
+        Row: {
+          created_at: string
+          id: string
+          total_reports: number
+          trust_score: number
+          updated_at: string
+          verified_reports: number
+        }
+        Insert: {
+          created_at?: string
+          id: string
+          total_reports?: number
+          trust_score?: number
+          updated_at?: string
+          verified_reports?: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          total_reports?: number
+          trust_score?: number
+          updated_at?: string
+          verified_reports?: number
+        }
+        Relationships: []
+      }
+      reports: {
+        Row: {
+          availability: Database["public"]["Enums"]["availability_status"]
+          created_at: string
+          food_type: Database["public"]["Enums"]["food_type"]
+          id: string
+          latitude: number
+          longitude: number
+          market_name: string
+          photo_url: string | null
+          price: number
+          reporter_id: string
+          validation_status: Database["public"]["Enums"]["validation_status"]
+        }
+        Insert: {
+          availability: Database["public"]["Enums"]["availability_status"]
+          created_at?: string
+          food_type: Database["public"]["Enums"]["food_type"]
+          id?: string
+          latitude: number
+          longitude: number
+          market_name: string
+          photo_url?: string | null
+          price?: number
+          reporter_id: string
+          validation_status?: Database["public"]["Enums"]["validation_status"]
+        }
+        Update: {
+          availability?: Database["public"]["Enums"]["availability_status"]
+          created_at?: string
+          food_type?: Database["public"]["Enums"]["food_type"]
+          id?: string
+          latitude?: number
+          longitude?: number
+          market_name?: string
+          photo_url?: string | null
+          price?: number
+          reporter_id?: string
+          validation_status?: Database["public"]["Enums"]["validation_status"]
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +91,9 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      availability_status: "available" | "limited" | "not_available"
+      food_type: "eggs" | "beans" | "fish" | "milk" | "meat"
+      validation_status: "pending" | "verified" | "flagged"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +220,10 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      availability_status: ["available", "limited", "not_available"],
+      food_type: ["eggs", "beans", "fish", "milk", "meat"],
+      validation_status: ["pending", "verified", "flagged"],
+    },
   },
 } as const
