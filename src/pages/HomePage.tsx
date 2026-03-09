@@ -46,9 +46,15 @@ export default function HomePage() {
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
+              <Link to="/insights">
+                <BarChart3 className="h-4 w-4 mr-2" />
+                View Insights
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg">
               <Link to="/map">
                 <Map className="h-4 w-4 mr-2" />
-                View Live Map
+                Live Map
               </Link>
             </Button>
           </div>
