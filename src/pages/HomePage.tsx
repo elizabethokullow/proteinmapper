@@ -103,7 +103,7 @@ export default function HomePage() {
       </section>
 
       <footer className="border-t py-6 text-center text-sm text-muted-foreground">
-        ProteinMapper — Open source nutrition data for everyone
+        ProteinMapper — Real-Time Nutrition Intelligence for Vulnerable Communities · Kenya
       </footer>
     </div>
   );

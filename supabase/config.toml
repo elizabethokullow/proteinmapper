@@ -1,1 +1,10 @@
 project_id = "abwlpjebaqrrruvopnmj"
+
+[functions.protein-access]
+verify_jwt = false
+
+[functions.market-reports]
+verify_jwt = false
+
+[functions.protein-affordability]
+verify_jwt = false
