@@ -21,7 +21,7 @@ export default function MarketMap({ markets, onMarketClick, height = "400px" }: 
   useEffect(() => {
     if (!mapRef.current || mapInstanceRef.current) return;
 
-    const map = L.map(mapRef.current).setView([-1.955, 30.08], 13);
+    const map = L.map(mapRef.current).setView([-1.2921, 36.8219], 11);
     mapInstanceRef.current = map;
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {

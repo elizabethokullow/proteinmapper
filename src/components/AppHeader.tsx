@@ -1,11 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
-import { MapPin, ClipboardList, Map, Shield, Menu, X } from "lucide-react";
+import { MapPin, ClipboardList, Map, Shield, Menu, X, BarChart3, Code } from "lucide-react";
 import { useState } from "react";
 
 const navItems = [
   { to: "/", label: "Home", icon: MapPin },
   { to: "/submit", label: "Report", icon: ClipboardList },
   { to: "/map", label: "Map", icon: Map },
+  { to: "/insights", label: "Insights", icon: BarChart3 },
+  { to: "/api", label: "API", icon: Code },
   { to: "/admin", label: "Admin", icon: Shield },
 ];
 
