@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { MapPin, ClipboardList, Map, Shield, Users, BarChart3 } from "lucide-react";
+import { MapPin, ClipboardList, Map, Shield, Users, BarChart3, Code, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AppHeader from "@/components/AppHeader";
 
 const features = [
-  { icon: ClipboardList, title: "Quick Reporting", desc: "NutriScouts submit food data in under 15 seconds" },
-  { icon: Map, title: "Live Map", desc: "Real-time protein accessibility scores on a public map" },
-  { icon: Shield, title: "Data Credibility", desc: "Multi-report verification and trust scoring" },
-  { icon: BarChart3, title: "Protein Score", desc: "0–1 score combining availability, price & trust" },
-  { icon: Users, title: "Community-Driven", desc: "Powered by local reporters who know their markets" },
-  { icon: MapPin, title: "Open Data", desc: "API access for NGOs, governments and researchers" },
+  { icon: ClipboardList, title: "Quick Reporting", desc: "NutriScouts submit food data in under 15 seconds from Kenyan markets" },
+  { icon: Map, title: "Live Map", desc: "Real-time protein accessibility scores across Nairobi & Migori" },
+  { icon: BarChart3, title: "Affordability Index", desc: "PAI metric linking protein prices to daily income & child nutrition risk" },
+  { icon: AlertTriangle, title: "Risk Alerts", desc: "Automated nutrition risk alerts when conditions worsen" },
+  { icon: Code, title: "Open Data API", desc: "Digital Public Goods endpoints for NGOs, governments & researchers" },
+  { icon: Shield, title: "Data Credibility", desc: "Multi-report verification and trust scoring with 10 NutriScouts" },
 ];
 
 export default function HomePage() {
