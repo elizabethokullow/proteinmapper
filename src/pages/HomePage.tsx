@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { MapPin, ClipboardList, Map, Shield, Users, BarChart3 } from "lucide-react";
+import { MapPin, ClipboardList, Map, Shield, Users, BarChart3, Code, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AppHeader from "@/components/AppHeader";
 
 const features = [
-  { icon: ClipboardList, title: "Quick Reporting", desc: "NutriScouts submit food data in under 15 seconds" },
-  { icon: Map, title: "Live Map", desc: "Real-time protein accessibility scores on a public map" },
-  { icon: Shield, title: "Data Credibility", desc: "Multi-report verification and trust scoring" },
-  { icon: BarChart3, title: "Protein Score", desc: "0–1 score combining availability, price & trust" },
-  { icon: Users, title: "Community-Driven", desc: "Powered by local reporters who know their markets" },
-  { icon: MapPin, title: "Open Data", desc: "API access for NGOs, governments and researchers" },
+  { icon: ClipboardList, title: "Quick Reporting", desc: "NutriScouts submit food data in under 15 seconds from Kenyan markets" },
+  { icon: Map, title: "Live Map", desc: "Real-time protein accessibility scores across Nairobi & Migori" },
+  { icon: BarChart3, title: "Affordability Index", desc: "PAI metric linking protein prices to daily income & child nutrition risk" },
+  { icon: AlertTriangle, title: "Risk Alerts", desc: "Automated nutrition risk alerts when conditions worsen" },
+  { icon: Code, title: "Open Data API", desc: "Digital Public Goods endpoints for NGOs, governments & researchers" },
+  { icon: Shield, title: "Data Credibility", desc: "Multi-report verification and trust scoring with 10 NutriScouts" },
 ];
 
 export default function HomePage() {
@@ -31,12 +31,12 @@ export default function HomePage() {
             Mapping protein access in real-time
           </div>
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground leading-tight">
-            Every child deserves
-            <span className="text-primary"> protein-rich food</span>
+            Real-time nutrition intelligence
+            <span className="text-primary"> for vulnerable communities</span>
           </h1>
           <p className="mt-4 text-muted-foreground text-lg leading-relaxed">
-            ProteinMapper collects real-time community data about protein food availability
-            in local markets to identify nutrition gaps affecting children and vulnerable families.
+            ProteinMapper turns community market observations into real-time intelligence 
+            about child nutrition risk — tracking 10 markets across Nairobi and Migori with 100+ field reports.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <Button asChild size="lg">
@@ -46,9 +46,15 @@ export default function HomePage() {
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
+              <Link to="/insights">
+                <BarChart3 className="h-4 w-4 mr-2" />
+                View Insights
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg">
               <Link to="/map">
                 <Map className="h-4 w-4 mr-2" />
-                View Live Map
+                Live Map
               </Link>
             </Button>
           </div>
@@ -97,7 +103,7 @@ export default function HomePage() {
       </section>
 
       <footer className="border-t py-6 text-center text-sm text-muted-foreground">
-        ProteinMapper — Open source nutrition data for everyone
+        ProteinMapper — Real-Time Nutrition Intelligence for Vulnerable Communities · Kenya
       </footer>
     </div>
   );
