@@ -31,12 +31,12 @@ export default function HomePage() {
             Mapping protein access in real-time
           </div>
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground leading-tight">
-            Every child deserves
-            <span className="text-primary"> protein-rich food</span>
+            Real-time nutrition intelligence
+            <span className="text-primary"> for vulnerable communities</span>
           </h1>
           <p className="mt-4 text-muted-foreground text-lg leading-relaxed">
-            ProteinMapper collects real-time community data about protein food availability
-            in local markets to identify nutrition gaps affecting children and vulnerable families.
+            ProteinMapper turns community market observations into real-time intelligence 
+            about child nutrition risk — tracking 10 markets across Nairobi and Migori with 100+ field reports.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <Button asChild size="lg">
