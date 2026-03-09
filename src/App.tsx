@@ -25,6 +25,7 @@ const App = () => (
           <Route path="/submit" element={<SubmitReportPage />} />
           <Route path="/map" element={<LiveMapPage />} />
           <Route path="/insights" element={<InsightsPage />} />
+          <Route path="/trends" element={<TrendsPage />} />
           <Route path="/api" element={<ApiPage />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route path="*" element={<NotFound />} />

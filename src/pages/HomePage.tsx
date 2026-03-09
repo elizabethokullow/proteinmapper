@@ -28,7 +28,7 @@ export default function HomePage() {
         >
           <div className="inline-flex items-center gap-2 rounded-full border bg-accent px-4 py-1.5 text-sm text-accent-foreground mb-6">
             <span className="h-2 w-2 rounded-full bg-primary animate-pulse-gentle" />
-            Mapping protein access in real-time
+            A Bionala Initiative · Mapping protein access in real-time
           </div>
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground leading-tight">
             Real-time nutrition intelligence
