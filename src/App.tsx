@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import SubmitReportPage from "./pages/SubmitReportPage";
 import LiveMapPage from "./pages/LiveMapPage";
 import InsightsPage from "./pages/InsightsPage";
+import TrendsPage from "./pages/TrendsPage";
 import ApiPage from "./pages/ApiPage";
 import AdminPage from "./pages/AdminPage";
 import NotFound from "./pages/NotFound";
