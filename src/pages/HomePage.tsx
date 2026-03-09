@@ -103,7 +103,7 @@ export default function HomePage() {
       </section>
 
       <footer className="border-t py-6 text-center text-sm text-muted-foreground">
-        ProteinMapper — Real-Time Nutrition Intelligence for Vulnerable Communities · Kenya
+        ProteinMapper — A <span className="font-semibold text-foreground">Bionala</span> Initiative · Real-Time Nutrition Intelligence for Vulnerable Communities
       </footer>
     </div>
   );
