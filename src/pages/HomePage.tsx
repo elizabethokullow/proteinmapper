@@ -36,7 +36,7 @@ export default function HomePage() {
           </h1>
           <p className="mt-4 text-muted-foreground text-lg leading-relaxed">
             ProteinMapper turns community market observations into real-time intelligence 
-            about child nutrition risk — tracking 10 markets across Nairobi and Migori with 100+ field reports.
+            about child nutrition risk.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <Button asChild size="lg">
