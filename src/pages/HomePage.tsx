@@ -28,7 +28,7 @@ export default function HomePage() {
         >
           <div className="inline-flex items-center gap-2 rounded-full border bg-accent px-4 py-1.5 text-sm text-accent-foreground mb-6">
             <span className="h-2 w-2 rounded-full bg-primary animate-pulse-gentle" />
-            Mapping protein access in real-time
+            A Bionala Initiative · Mapping protein access in real-time
           </div>
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground leading-tight">
             Real-time nutrition intelligence
@@ -36,7 +36,7 @@ export default function HomePage() {
           </h1>
           <p className="mt-4 text-muted-foreground text-lg leading-relaxed">
             ProteinMapper turns community market observations into real-time intelligence 
-            about child nutrition risk — tracking 10 markets across Nairobi and Migori with 100+ field reports.
+            about child nutrition risk.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <Button asChild size="lg">
@@ -103,7 +103,7 @@ export default function HomePage() {
       </section>
 
       <footer className="border-t py-6 text-center text-sm text-muted-foreground">
-        ProteinMapper — Real-Time Nutrition Intelligence for Vulnerable Communities · Kenya
+        ProteinMapper — A <span className="font-semibold text-foreground">Bionala</span> Initiative · Real-Time Nutrition Intelligence for Vulnerable Communities
       </footer>
     </div>
   );
